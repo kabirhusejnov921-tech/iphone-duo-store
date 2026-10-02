@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iPhone 17 Pro Duo — Купить</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#000; --panel:#111114; --text:#f5f5f7; --muted:#86868b;
+  --accent:#2997ff; --accent2:#bf5af2;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,sans-serif;overflow-x:hidden}
+
+/* ===== NAV ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;
+  padding:16px 40px;backdrop-filter:blur(20px);background:rgba(0,0,0,.6);border-bottom:1px solid rgba(255,255,255,.06)}
+.logo{font-weight:800;font-size:20px}
+.logo span{color:var(--accent)}
+.nav-cta{background:var(--accent);color:#fff;border:none;padding:9px 22px;border-radius:980px;font-weight:600;font-size:14px;cursor:pointer;transition:.25s}
+.nav-cta:hover{background:#4aa8ff;transform:scale(1.05)}
+
+/* ===== PROGRESS BAR ===== */
+#progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));z-index:200;width:0%;transition:width .1s linear}
+
+/* ===== HERO ===== */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:100px 20px 60px;position:relative}
+.hero-glow{position:absolute;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(41,151,255,.15),transparent 65%);top:40%;left:50%;transform:translate(-50%,-50%);pointer-events:none;animation:pulse 4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.6;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.1)}}
+.hero h1{font-size:clamp(48px,8vw,110px);font-weight:900;letter-spacing:-3px;line-height:.95;
+  background:linear-gradient(180deg,#fff 30%,#6b6b70);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  animation:fadeUp 1s ease-out}
+.hero .sub{margin-top:16px;font-size:clamp(16px,2vw,22px);color:var(--muted);font-weight:500;animation:fadeUp 1s ease-out .3s both}
+.hero .price-tag{margin-top:12px;font-size:20px;font-weight:600;animation:fadeUp 1s ease-out .5s both}
+.hero .price-tag b{color:var(--accent)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+.scroll-hint{margin-top:60px;color:var(--muted);font-size:14px;display:flex;flex-direction:column;align-items:center;gap:12px;animation:fadeUp 1s ease-out .8s both}
+.mouse{width:26px;height:42px;border:2px solid var(--muted);border-radius:15px;position:relative}
+.mouse::after{content:'';position:absolute;left:50%;top:8px;width:4px;height:8px;background:var(--muted);border-radius:3px;transform:translateX(-50%);animation:wheel 1.6s infinite}
+@keyframes wheel{0%{opacity:1;top:8px}70%{opacity:0;top:22px}100%{opacity:0}}
+
+/* ===== DUO SHOWCASE ===== */
+.duo-showcase{padding:80px 20px;text-align:center}
+.duo-showcase h2{font-size:clamp(28px,4vw,48px);font-weight:800;letter-spacing:-1.5px;margin-bottom:10px}
+.duo-showcase p{color:var(--muted);font-size:17px;margin-bottom:50px}
+.duo-phones{display:flex;justify-content:center;gap:clamp(20px,5vw,80px);flex-wrap:wrap}
+.duo-item{display:flex;flex-direction:column;align-items:center;gap:16px}
+.duo-phone{width:min(200px,40vw);aspect-ratio:200/420;border-radius:36px;position:relative;transition:transform .5s cubic-bezier(.2,1.2,.3,1);box-shadow:0 30px 70px rgba(0,0,0,.6),inset 0 0 0 2px rgba(255,255,255,.12)}
+.duo-phone:hover{transform:translateY(-12px) rotate(-2deg)}
+.duo-phone::before{content:'';position:absolute;top:10px;left:50%;transform:translateX(-50%);width:64px;height:18px;background:rgba(0,0,0,.9);border-radius:12px}
+.duo-phone::after{content:'';position:absolute;left:12px;top:12px;width:64px;height:64px;border-radius:18px;background:rgba(0,0,0,.2);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
+.duo-phone.p1{background:linear-gradient(160deg,#3a3a3c,#1a1a1c)}
+.duo-phone.p2{background:linear-gradient(160deg,#a7c1d9,#5e7f9d)}
+.duo-label{font-size:16px;font-weight:600}
+.duo-price{font-size:14px;color:var(--accent);font-weight:700}
+.duo-badge{background:linear-gradient(90deg,var(--accent),var(--accent2));padding:6px 16px;border-radius:980px;font-size:12px;font-weight:700;letter-spacing:.5px}
+
+/* ===== STICKY EXPLODE SECTION ===== */
+#explode{height:600vh;position:relative}
+.explode-stage{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.stage-title{position:absolute;top:8vh;width:100%;text-align:center;font-size:clamp(24px,3.5vw,40px);font-weight:800;letter-spacing:-1px;opacity:0;transform:translateY(-20px);transition:all .5s}
+.stage-title.show{opacity:1;transform:translateY(0)}
+.stage-title small{display:block;font-size:14px;color:var(--muted);font-weight:500;margin-top:8px}
+
+/* ДВА ТЕЛЕФОНА РЯДОМ */
+.phones-row{display:flex;gap:clamp(30px,6vw,100px);align-items:center;justify-content:center}
+.phone-unit{position:relative;width:min(280px,38vw);aspect-ratio:280/580;will-change:transform}
+.phone-unit.small{width:min(220px,32vw);aspect-ratio:220/460}
+
+.layer{position:absolute;border-radius:40px;will-change:transform,opacity}
+.l-back{inset:0;background:linear-gradient(160deg,#2a2a2e,#17171a);box-shadow:0 0 0 2px rgba(255,255,255,.08)}
+.l-board{inset:12px;background:linear-gradient(140deg,#0d3b2e,#123f31);border-radius:32px;box-shadow:inset 0 0 0 1px rgba(0,255,170,.15)}
+.l-board::after{content:'';position:absolute;inset:14px;background:
+  radial-gradient(circle at 30% 30%,rgba(255,255,255,.14) 0 3px,transparent 4px),
+  radial-gradient(circle at 70% 55%,rgba(255,255,255,.12) 0 3px,transparent 4px),
+  radial-gradient(circle at 45% 75%,rgba(255,255,255,.1) 0 3px,transparent 4px),
+  radial-gradient(circle at 80% 25%,rgba(255,255,255,.12) 0 3px,transparent 4px)}
+.l-batt{left:22px;right:22px;top:44%;height:28%;background:linear-gradient(160deg,#1c1c1f,#2e2e33);border-radius:16px;border:1px solid rgba(255,255,255,.1)}
+.l-batt::before{content:'4823 mAh';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:11px;color:#9be29b;font-weight:600}
+.l-cam{left:16px;top:16px;width:100px;height:100px;background:#101013;border-radius:26px;border:1px solid rgba(255,255,255,.1)}
+.l-cam i{position:absolute;width:36px;height:36px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#3d5a80,#0b0b0e 70%);box-shadow:0 0 0 4px #1c1c20,0 0 0 6px rgba(255,255,255,.06)}
+.l-cam i:nth-child(1){top:8px;left:8px}
+.l-cam i:nth-child(2){top:8px;right:8px}
+.l-cam i:nth-child(3){bottom:8px;left:50%;transform:translateX(-50%)}
+.l-front{inset:0;background:#000;box-shadow:0 0 0 3px rgba(255,255,255,.12);overflow:hidden;border-radius:40px}
+.l-front::after{content:'';position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.08) 45%,transparent 60%)}
+.notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:80px;height:22px;background:#0a0a0c;border-radius:14px}
+.screen-ui{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px}
+.screen-ui .clock{font-size:44px;font-weight:800;letter-spacing:-2px}
+.screen-ui .date{font-size:13px;color:#c9c9cf}
+.screen-ui .hello{font-size:12px;color:var(--accent);font-weight:600}
+
+.part-label{position:absolute;font-size:12px;font-weight:600;color:#fff;background:rgba(20,20,24,.9);border:1px solid rgba(255,255,255,.15);
+  padding:7px 12px;border-radius:980px;white-space:nowrap;opacity:0;transform:translateY(10px) scale(.9);transition:all .4s cubic-bezier(.2,1.4,.4,1);z-index:10;pointer-events:none}
+.part-label.show{opacity:1;transform:translateY(0) scale(1)}
+.part-label::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:6px}
+.pl-cam{top:2%;left:-30%}
+.pl-board{top:36%;right:-38%}
+.pl-batt{bottom:22%;left:-40%}
+.pl-chip{top:50%;right:-32%}
+.pl-chip::before{background:var(--accent2)}
+
+/* ===== SPECS ===== */
+.specs{padding:14vh 6vw;max-width:1200px;margin:0 auto}
+.specs h2{font-size:clamp(28px,4vw,48px);font-weight:800;letter-spacing:-1.5px;text-align:center;margin-bottom:8px}
+.specs .lead{text-align:center;color:var(--muted);font-size:16px;margin-bottom:60px}
+.spec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.spec-card{background:var(--panel);border:1px solid rgba(255,255,255,.07);border-radius:22px;padding:30px 26px;transition:all .35s;opacity:0;transform:translateY(40px)}
+.spec-card.visible{opacity:1;transform:translateY(0)}
+.spec-card:hover{transform:translateY(-6px);border-color:rgba(41,151,255,.4)}
+.spec-card .ico{font-size:32px;margin-bottom:16px}
+.spec-card h3{font-size:18px;font-weight:700;margin-bottom:8px}
+.spec-card p{color:var(--muted);font-size:14px;line-height:1.6}
+.spec-card .big{font-size:32px;font-weight:800;letter-spacing:-1px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+/* ===== COLORS ===== */
+.colors-sec{padding:12vh 6vw;text-align:center}
+.colors-sec h2{font-size:clamp(28px,4vw,48px);font-weight:800;letter-spacing:-1.5px}
+.colors-sec .lead{color:var(--muted);margin:10px 0 50px;font-size:16px}
+.color-stage{display:flex;justify-content:center;align-items:center;gap:clamp(20px,5vw,60px);flex-wrap:wrap}
+.color-phone{width:min(240px,55vw);aspect-ratio:240/500;border-radius:36px;position:relative;transition:background 1s cubic-bezier(.6,0,.2,1);box-shadow:0 30px 70px rgba(0,0,0,.6),inset 0 0 0 2px rgba(255,255,255,.15)}
+.color-phone::before{content:'';position:absolute;top:10px;left:50%;transform:translateX(-50%);width:70px;height:20px;background:rgba(0,0,0,.85);border-radius:12px}
+.color-phone::after{content:'';position:absolute;left:12px;top:12px;width:76px;height:76px;border-radius:20px;background:rgba(0,0,0,.15);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
+.color-name{font-size:22px;font-weight:700;margin-top:30px;min-height:30px;transition:.4s}
+.dots{display:flex;gap:14px;justify-content:center;margin-top:20px}
+.dot{width:36px;height:36px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:.3s}
+.dot.active{border-color:var(--accent);transform:scale(1.15)}
+.dot:hover{transform:scale(1.1)}
+
+/* ===== BUY ===== */
+.buy{min-height:100vh;padding:12vh 6vw 8vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.buy h2{font-size:clamp(28px,4vw,48px);font-weight:800;letter-spacing:-1.5px;text-align:center}
+.buy .lead{color:var(--muted);margin:10px 0 40px;font-size:16px;text-align:center}
+.buy-card{background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:28px;padding:clamp(24px,4vw,44px);width:min(860px,100%);
+  display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(20px,4vw,48px);box-shadow:0 40px 90px rgba(0,0,0,.5)}
+@media(max-width:700px){.buy-card{grid-template-columns:1fr}}
+.buy-visual{display:flex;align-items:center;justify-content:center}
+.mini-phone{width:150px;aspect-ratio:150/310;border-radius:28px;transition:background .8s;box-shadow:0 20px 50px rgba(0,0,0,.5),inset 0 0 0 2px rgba(255,255,255,.15);position:relative}
+.mini-phone::before{content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);width:48px;height:13px;background:rgba(0,0,0,.85);border-radius:9px}
+.opt-group{margin-bottom:22px}
+.opt-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:10px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{padding:10px 18px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:transparent;color:var(--text);font-size:14px;font-weight:600;cursor:pointer;transition:.25s;font-family:inherit}
+.chip:hover{border-color:rgba(255,255,255,.4)}
+.chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.mem-note{font-size:12px;color:var(--muted);margin-top:8px;min-height:16px}
+.total-row{display:flex;justify-content:space-between;align-items:baseline;margin-top:6px;padding-top:16px;border-top:1px solid rgba(255,255,255,.1)}
+.total-row .lbl{color:var(--muted);font-size:13px}
+.total-price{font-size:34px;font-weight:800;letter-spacing:-1.5px;transition:.3s}
+.buy-btn{width:100%;margin-top:18px;padding:15px;border:none;border-radius:14px;background:linear-gradient(90deg,var(--accent),#0071e3);color:#fff;font-size:16px;font-weight:700;cursor:pointer;transition:.3s;font-family:inherit}
+.buy-btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(41,151,255,.35)}
+.credit{font-size:12px;color:var(--muted);text-align:center;margin-top:10px}
+
+footer{padding:36px;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid rgba(255,255,255,.06)}
+
+.toast{position:fixed;bottom:26px;left:50%;transform:translate(-50%,150px);background:#1c1c22;border:1px solid rgba(255,255,255,.14);padding:14px 24px;border-radius:14px;font-size:14px;z-index:300;transition:transform .5s cubic-bezier(.2,1.4,.4,1);box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.toast.show{transform:translate(-50%,0)}
+.toast b{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<nav>
+  <div class="logo">iPhone<span> Duo</span></div>
+  <button class="nav-cta" onclick="document.getElementById('buy').scrollIntoView({behavior:'smooth'})">Купить</button>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-glow"></div>
+  <h1>iPhone 17 Pro Duo</h1>
+  <p class="sub">Два титановых монстра. Одна легенда.</p>
+  <p class="price-tag">от <b>99 990 ₽</b> или 8 332 ₽/мес.</p>
+  <div class="scroll-hint"><div class="mouse"></div>Крути вниз — разберём оба на части</div>
+</header>
+
+<!-- DUO SHOWCASE -->
+<section class="duo-showcase">
+  <h2>Два — это сила</h2>
+  <p>Чёрный титан и синий титан. Выбирай оба.</p>
+  <div class="duo-phones">
+    <div class="duo-item">
+      <div class="duo-badge">HOT</div>
+      <div class="duo-phone p1"></div>
+      <div class="duo-label">Титановый чёрный</div>
+      <div class="duo-price">99 990 ₽</div>
+    </div>
+    <div class="duo-item">
+      <div class="duo-badge">NEW</div>
+      <div class="duo-phone p2"></div>
+      <div class="duo-label">Титановый синий</div>
+      <div class="duo-price">99 990 ₽</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPLODE -->
+<section id="explode">
+  <div class="explode-stage">
+    <div class="stage-title" id="stageTitle">Загляни внутрь Duo<small>Два iPhone — двойная инженерная красота</small></div>
+
+    <div class="phones-row">
+      <!-- PHONE 1 -->
+      <div class="phone-unit" id="phone1">
+        <div class="part-label pl-cam" id="p1lblCam">Камера Pro · 48 Мп</div>
+        <div class="part-label pl-board" id="p1lblBoard">Плата A19 Pro</div>
+        <div class="part-label pl-batt" id="p1lblBatt">Батарея 4823 мА·ч</div>
+        <div class="part-label pl-chip" id="p1lblChip">3 нм чип</div>
+        <div class="layer l-back"></div>
+        <div class="layer l-board" data-part="board"></div>
+        <div class="layer l-batt" data-part="batt"></div>
+        <div class="layer l-cam" data-part="cam"><i></i><i></i><i></i></div>
+        <div class="layer l-front" data-part="front">
+          <div class="notch"></div>
+          <div class="screen-ui"><div class="hello">iPhone 17 Pro</div><div class="clock">17:27</div><div class="date">2 октября</div></div>
+        </div>
+      </div>
+
+      <!-- PHONE 2 -->
+      <div class="phone-unit small" id="phone2">
+        <div class="part-label pl-cam" id="p2lblCam">Камера Pro · 48 Мп</div>
+        <div class="part-label pl-board" id="p2lblBoard">Плата A19 Pro</div>
+        <div class="part-label pl-batt" id="p2lblBatt">Батарея 4823 мА·ч</div>
+        <div class="part-label pl-chip" id="p2lblChip">3 нм чип</div>
+        <div class="layer l-back"></div>
+        <div class="layer l-board" data-part="board"></div>
+        <div class="layer l-batt" data-part="batt"></div>
+        <div class="layer l-cam" data-part="cam"><i></i><i></i><i></i></div>
+        <div class="layer l-front" data-part="front">
+          <div class="notch"></div>
+          <div class="screen-ui"><div class="hello">iPhone 17 Pro</div><div class="clock">17:27</div><div class="date">2 октября</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECS -->
+<section class="specs">
+  <h2>Характеристики Duo</h2>
+  <p class="lead">Всё, что ты хотел знать — в одном месте</p>
+  <div class="spec-grid">
+    <div class="spec-card"><div class="ico">⚡️</div><h3>Чип A19 Pro</h3><div class="big">3 нм</div><p>6-ядерный CPU и 6-ядерный GPU. Самый быстрый чип в смартфоне.</p></div>
+    <div class="spec-card"><div class="ico">📸</div><h3>Камера Pro</h3><div class="big">48 Мп</div><p>Три модуля, зум 5×, ночной режим, ProRes 4K 120 fps.</p></div>
+    <div class="spec-card"><div class="ico">🔋</div><h3>Батарея</h3><div class="big">33 ч</div><p>Видео до 33 часов. MagSafe 25 Вт — 50% за 30 минут.</p></div>
+    <div class="spec-card"><div class="ico">🖥</div><h3>Дисплей</h3><div class="big">120 Гц</div><p>6,3" Super Retina XDR, ProMotion, 3000 нит, Always-On.</p></div>
+    <div class="spec-card"><div class="ico">🛡</div><h3>Корпус</h3><div class="big">Титан</div><p>Аэрокосмический титан Grade 5, керамический щит, IP68.</p></div>
+    <div class="spec-card"><div class="ico">📡</div><h3>Связь</h3><div class="big">5G</div><p>Wi-Fi 7, Bluetooth 5.4, USB-C 3.2, спутниковая связь.</p></div>
+  </div>
+</section>
+
+<!-- COLORS -->
+<section class="colors-sec">
+  <h2>Выбери свой цвет</h2>
+  <p class="lead">Пять фирменных оттенков титана</p>
+  <div class="color-stage">
+    <div>
+      <div class="color-phone" id="colorPhone"></div>
+      <div class="color-name" id="colorName">Титановый белый</div>
+      <div class="dots" id="dots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- BUY -->
+<section class="buy" id="buy">
+  <h2>Какой Duo возьмёшь?</h2>
+  <p class="lead">Собери свою конфигурацию</p>
+  <div class="buy-card">
+    <div class="buy-visual"><div class="mini-phone" id="miniPhone"></div></div>
+    <div>
+      <div class="opt-group">
+        <div class="opt-label">Цвет</div>
+        <div class="chips" id="colorChips"></div>
+      </div>
+      <div class="opt-group">
+        <div class="opt-label">Память</div>
+        <div class="chips" id="memChips"></div>
+        <div class="mem-note" id="memNote"></div>
+      </div>
+      <div class="total-row">
+        <span class="lbl" id="configLabel">iPhone 17 Pro · 256 ГБ</span>
+        <span class="total-price" id="totalPrice">99 990 ₽</span>
+      </div>
+      <button class="buy-btn" id="buyBtn">Купить</button>
+      <div class="credit">Бесплатная доставка · Рассрочка 0-0-24 · Trade-in</div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 iPhone Duo Store. Демо-лендинг.</footer>
+<div class="toast" id="toast"></div>
+
+<script>
+// ===== PROGRESS BAR =====
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const p=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progress').style.width=p+'%';
+});
+
+// ===== SCROLL EXPLODE (vanilla JS, no libs) =====
+const explodeSec=document.getElementById('explode');
+const stageTitle=document.getElementById('stageTitle');
+
+function updateExplode(){
+  const rect=explodeSec.getBoundingClientRect();
+  const total=explodeSec.offsetHeight-window.innerHeight;
+  const scrolled=Math.min(Math.max(-rect.top,0),total);
+  const p=scrolled/total; // 0..1
+
+  // title
+  stageTitle.classList.toggle('show',p>0.02&&p<0.95);
+
+  const ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+
+  // phase 1: 0-0.15 phones appear
+  const appear=Math.min(p/0.12,1);
+  const s1=0.8+0.2*appear, s2=0.8+0.2*appear;
+  const op1=appear, op2=appear;
+
+  // phase 2: 0.15-0.5 explode
+  const ex=ease(Math.min(Math.max((p-0.15)/0.35,0),1));
+  // phase 3: 0.5-0.7 hold
+  // phase 4: 0.7-1 assemble
+  const asm=ease(Math.min(Math.max((p-0.7)/0.3,0),1));
+
+  const e=ex*(1-asm); // effective explode amount
+
+  ['phone1','phone2'].forEach((pid,idx)=>{
+    const ph=document.getElementById(pid);
+    const dir=idx===0?1:-1; // разлетаются в разные стороны
+    const baseScale=idx===0?s1:s2;
+    const baseOp=idx===0?op1:op2;
+
+    ph.style.opacity=baseOp;
+    ph.style.transform=`scale(${baseScale+e*0.05}) rotate(${e*dir*3}deg)`;
+
+    const front=ph.querySelector('[data-part="front"]');
+    const cam=ph.querySelector('[data-part="cam"]');
+    const batt=ph.querySelector('[data-part="batt"]');
+    const board=ph.querySelector('[data-part="board"]');
+
+    // front glass up
+    front.style.transform=`translateY(${-e*220}px) rotate(${-e*5*dir}deg)`;
+    front.style.opacity=1-e*0.7;
+    // camera left/up
+    cam.style.transform=`translate(${-e*130*dir}px,${-e*80}px) rotate(${-e*10*dir}deg)`;
+    // battery down
+    batt.style.transform=`translateY(${e*180}px)`;
+    // board right
+    board.style.transform=`translateX(${e*140*dir}px) rotate(${e*4*dir}deg)`;
+
+    // labels
+    const th=[0.25,0.35,0.45,0.3];
+    const ids=['lblCam','lblBoard','lblBatt','lblChip'];
+    ids.forEach((id,i)=>{
+      const el=document.getElementById((idx===0?'p1':'p2')+id);
+      el.classList.toggle('show',e>th[i]&&e<0.9);
+    });
+  });
+}
+window.addEventListener('scroll',updateExplode,{passive:true});
+updateExplode();
+
+// ===== REVEAL CARDS =====
+const cards=document.querySelectorAll('.spec-card');
+const io=new IntersectionObserver(es=>{
+  es.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('visible'),i*80);
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:0.15});
+cards.forEach(c=>io.observe(c));
+
+// ===== COLORS ===== */
+const COLORS=[
+  {name:'Титановый белый', hex:'linear-gradient(160deg,#f5f5f7,#d9d9de)'},
+  {name:'Титановый чёрный', hex:'linear-gradient(160deg,#3a3a3c,#1a1a1c)'},
+  {name:'Титановый синий',  hex:'linear-gradient(160deg,#a7c1d9,#5e7f9d)'},
+  {name:'Титановый пустынный', hex:'linear-gradient(160deg,#f4e8ce,#d9c39a)'},
+  {name:'Титановый зелёный', hex:'linear-gradient(160deg,#5c7a63,#33473a)'},
+];
+const MEMS=[
+  {gb:'256 ГБ', price:99990, note:'Для фото, соцсетей и игр'},
+  {gb:'512 ГБ', price:119990, note:'Для 4K-видео и большой библиотеки'},
+  {gb:'1 ТБ',   price:139990, note:'Для ProRes-съёмки'},
+  {gb:'2 ТБ',   price:179990, note:'Максимум. Снимай сколько хочешь'},
+];
+let curColor=0,curMem=0;
+const fmt=n=>n.toLocaleString('ru-RU')+' ₽';
+
+const dotsEl=document.getElementById('dots');
+COLORS.forEach((c,i)=>{
+  const d=document.createElement('div');
+  d.className='dot'+(i===0?' active':'');
+  d.style.background=c.hex; d.title=c.name;
+  d.onclick=()=>setColor(i);
+  dotsEl.appendChild(d);
+});
+document.getElementById('colorPhone').style.background=COLORS[0].hex;
+document.getElementById('miniPhone').style.background=COLORS[0].hex;
+
+const cc=document.getElementById('colorChips');
+COLORS.forEach((c,i)=>{
+  const b=document.createElement('button');
+  b.className='chip'+(i===0?' active':''); b.textContent=c.name;
+  b.onclick=()=>setColor(i); cc.appendChild(b);
+});
+const mc=document.getElementById('memChips');
+MEMS.forEach((m,i)=>{
+  const b=document.createElement('button');
+  b.className='chip'+(i===0?' active':''); b.textContent=m.gb;
+  b.onclick=()=>{curMem=i;
+    document.querySelectorAll('#memChips .chip').forEach((c,k)=>c.classList.toggle('active',k===i));
+    update();};
+  mc.appendChild(b);
+});
+
+function setColor(i){
+  curColor=i;
+  document.getElementById('colorPhone').style.background=COLORS[i].hex;
+  document.getElementById('miniPhone').style.background=COLORS[i].hex;
+  document.getElementById('colorName').textContent=COLORS[i].name;
+  document.querySelectorAll('.dot').forEach((d,k)=>d.classList.toggle('active',k===i));
+  document.querySelectorAll('#colorChips .chip').forEach((c,k)=>c.classList.toggle('active',k===i));
+  update();
+}
+function update(){
+  document.getElementById('totalPrice').textContent=fmt(MEMS[curMem].price);
+  document.getElementById('memNote').textContent=MEMS[curMem].note;
+  document.getElementById('configLabel').textContent=`iPhone 17 Pro · ${COLORS[curColor].name} · ${MEMS[curMem].gb}`;
+}
+update();
+
+document.getElementById('buyBtn').onclick=()=>{
+  const t=document.getElementById('toast');
+  t.innerHTML=`<b>✓ Добавлено!</b> iPhone 17 Pro · ${COLORS[curColor].name} · ${MEMS[curMem].gb} — ${fmt(MEMS[curMem].price)}`;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3000);
+};
+</script>
+</body>
+</html>
